@@ -1,0 +1,107 @@
+:root{
+    --blanc-cassé: #fafafa;
+    --blanc: #ffffff;
+    --noir: #1a1a1a;
+    --gris: #6b6b6b;
+    --border: #eaeaea;
+}
+[data-theme="sombre"]{
+    --border: #3a3650;
+    --blanc-cassé: #0f0e17;
+    --blanc: #1e1b2e;
+    --noir: #f5f4f0;
+    --gris: #a5a2b8;
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    background-color: var(--blanc-cassé);
+}
+/* ................en-tête............*/
+nav{
+    background-color: var(--blanc);
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 80px;
+    height: 40px;
+}
+
+nav div span{
+    font-weight: 600;
+    font-size: 1.9rem;
+}
+.ul1{
+    width: 18rem;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+}
+.ul1 li{
+    display: inline;
+}
+.ul1 li a{
+    color: var(--gris);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+.ul2{
+    display: flex;
+    justify-content: space-between;
+    width: 6rem;
+    margin-top: 8px;
+}
+.ul2 li{
+    display: inline;
+}
+.hero{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    padding: 20px 80px;
+    height: 400px;
+    background-image:    linear-gradient(to right, #ffff 0%, #ffff 50%, #0f0e17 100%);
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-bottom: solid 1px #f09819;
+}
+.hero_presentation{
+    height: 25rem;
+    width: 27rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.hero_presentation h1{
+    font-size: 2.8rem;
+    font-weight: 600;
+    color: var(--noir);
+    text-shadow: 0px 0px 1px  #f09819;
+}
+.hero_presentation p{
+    color: #a5a2b8;
+}
+.hero_presentation button{
+    width: 15rem;
+    height: 4rem;
+    color: var(--blanc);
+    background:  linear-gradient(135deg, #ff512f, #f09819);
+    border: none;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+.hero_presentation  button:hover{
+    transform: scale(0.92);
+}
+
+.hero_presentation button a{
+    color: var(--blanc);
+    font-weight: 500;
+    font-size: 1rem;
+}
