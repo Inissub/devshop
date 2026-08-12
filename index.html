@@ -19,7 +19,7 @@
                 <li><a href="">blog</a></li>
             </ul>
             <ul class="ul2" >
-                <li><button id="panier"><img width="30" height="25" src="images/shopping_cart.png" alt=""></button></li>
+                <li><button id="cadi"><img width="30" height="25" src="images/shopping_cart.png" alt="">0</button></li>
                 <li><button id="profil"><img width="30" height="25" src="images/account_circle_24dp_.png" alt=""></button></li>
             </ul>
         </nav>
@@ -37,14 +37,27 @@
     </section>
 
     <section class="rech_section">
-        <form action="">
-            <input type="text">
+        <form name="rech_form" action="">
+            <input type="text" name="categorie">
             <input type="submit">
         </form>
     </section>
 
     <section class="filtr_section">
-        <button class="cat1">categorie 1</button>
+        <button class="filtre_buton" data-cat="men's clothing">Habits pour hommes</button>
+        <button class="filtre_buton" data-cat="jewelery">Bijoux</button>
+        <button class="filtre_buton" data-cat="electronics">electronic</button>
+        <button class="filtre_buton" data-cat="women's clothing">habits pour femmes</button>
     </section>
+
+    <section id="liste_produit">
+        <div class="produit_item">
+
+        </div>
+    </section>
+
+
+
+    <script src="js/function.js"></script>
 </body>
 </html>
