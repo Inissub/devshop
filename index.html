@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme="clair" lang="en">
+<html data-theme="sombre" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,49 +14,50 @@
         <nav>
             <div><span>DevShop</span></div>
             <ul class="ul1">
-                <li><a href=""> à propos</a></li>
-                <li><a href="">contacs</a></li>
-                <li><a href="">blog</a></li>
+                <li><a href="#"> à propos</a></li>
+                <li><a href="#">contacs</a></li>
+                <li><a href="#">blog</a></li>
             </ul>
             <ul class="ul2" >
-                <li><button id="cadi"><img width="30" height="25" src="images/shopping_cart.png" alt="">0</button></li>
-                <li><button id="profil"><img width="30" height="25" src="images/account_circle_24dp_.png" alt=""></button></li>
+                <li><button id="shop"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart-icon lucide-shopping-cart"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg><span id="cadi"></span></button></li>
+                <li><button id="change"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings-icon lucide-settings"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"/><circle cx="12" cy="12" r="3"/></svg></button></li>
             </ul>
         </nav>
     </header>
-
     <section class="hero">
         <div class="hero_presentation">
             <h1>Tout Ce Dont Vous Avez Besoin, En Un Clic</h1>
             <p>Des milliers d'articles, une expérience fluide, une livraison rapide.</p>
-            <button><a href="">Commencer mes achats</a></button>
+            <button><a href="#rech">Commencer mes achats</a></button>
         </div>
         <div class="photo">
-
+            <div  class="photo1 vue"><img   src="images/casque-removebg-preview.png" alt=""></div>
+            <div  class="photo2 vue"><img  src="images/pants-removebg-preview.png" alt=""></div>
+            <div class="photo4 vue" ><img   src="images/dress-removebg-preview.png" alt=""></div>
         </div>
     </section>
-
-    <section class="rech_section">
-        <form name="rech_form" action="">
-            <input type="text" name="categorie">
+    <section  class="rech_section">
+        <form id="rech" name="rech_form" action="">
+            <input type="text" name="categorie" placeholder="Obtenez tout ce dont vous avez besoin">
             <input type="submit">
         </form>
     </section>
-
     <section class="filtr_section">
-        <button class="filtre_buton" data-cat="men's clothing">Habits pour hommes</button>
+        <button class="filtre_buton" data-cat="men's clothing">Habits pour <br> hommes</button>
         <button class="filtre_buton" data-cat="jewelery">Bijoux</button>
         <button class="filtre_buton" data-cat="electronics">electronic</button>
-        <button class="filtre_buton" data-cat="women's clothing">habits pour femmes</button>
+        <button class="filtre_buton" data-cat="women's clothing">habits pour <br> femmes</button>
     </section>
-
+    <div class="decouvre">
+        <h2>Découvrez nos articles</h2>
+    </div>
     <section id="liste_produit">
-        <div class="produit_item">
 
-        </div>
     </section>
 
-
+    <footer>
+        <p> &copy;  Tous droits réservés -<span class="proj_titre">BSK</span></p>
+    </footer>
 
     <script src="js/function.js"></script>
 </body>

@@ -4,6 +4,7 @@
     --noir: #1a1a1a;
     --gris: #6b6b6b;
     --border: #eaeaea;
+    --card : #f2f0f5;
 }
 [data-theme="sombre"]{
     --border: #3a3650;
@@ -11,6 +12,8 @@
     --blanc: #1e1b2e;
     --noir: #f5f4f0;
     --gris: #a5a2b8;
+    --card: #3a3650;
+
 }
 
 
@@ -36,6 +39,7 @@ nav{
 nav div span{
     font-weight: 600;
     font-size: 1.9rem;
+    color: var(--noir);
 }
 .ul1{
     width: 18rem;
@@ -60,19 +64,42 @@ nav div span{
 .ul2 li{
     display: inline;
 }
+
+#shop{
+    background: none;
+    border: none;
+    padding: 8px;
+}
+#shop svg {
+    color: var(--noir);
+}
+#cadi{
+    position: absolute;
+    top: 1;
+    right: 2;
+    color: var(--noir);
+}
+#change{
+    background: none;
+    border: none;
+    padding: 8px;
+}
+#change{
+    color: var(--noir);
+}
+
 .hero{
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
     padding: 20px 80px;
-    height: 400px;
-    background-image:    linear-gradient(to right, #ffff 0%, #ffff 50%, #0f0e17 100%);
+    height: 30rem;
+    background-image:    linear-gradient(to right,var(--blanc) 0%,var(--blanc)  50%, #d9d9d9 100%);
     background-size: cover;
     background-repeat: no-repeat;
-    border-bottom: solid 1px #f09819;
 }
 .hero_presentation{
-    height: 25rem;
+    height: 30rem;
     width: 27rem;
     display: flex;
     flex-direction: column;
@@ -90,20 +117,345 @@ nav div span{
 .hero_presentation button{
     width: 15rem;
     height: 4rem;
-    color: var(--blanc);
-    background:  linear-gradient(135deg, #ff512f, #f09819);
+    background-color: var(--blanc) ;
     border: none;
     border-radius: 10px;
     transition: 0.3s;
+    background:  linear-gradient(135deg, #ff512f, #f09819);
+    border: solid 2px #ff512f
 }
 .hero_presentation  button:hover{
     transform: scale(0.92);
 }
 
 .hero_presentation button a{
-    color: var(--blanc);
+    color: var(--noir);
     font-weight: 500;
     font-size: 1rem;
 }
+.photo{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr ;
+    gap: 2rem;
+    width: 38rem;
+    height: 25rem;
+}
+.vue img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    transition: 0.8s;
+}
+.photo1{
+    grid-column: 1/4;
+    grid-row: 1/5;
+    animation: flotter 3s ease-in-out infinite;
+    animation-delay: 1.4s; 
+}
+.photo2{
+    grid-column: 3 / 7;
+    grid-row: 1 / 7;
+    animation: flotter 3s ease-in-out infinite;
+}
 
+.photo3{
+    grid-column: 5/ 7;
+    grid-row: 1/ 4;
+    animation: flotter 3s ease-in-out infinite;
+}
+.photo4{
+    grid-column: 2/ 4;
+    grid-row: 4 / 7;
+    animation: flotter 3s ease-in-out infinite;
+    animation-delay: 1s; 
+}
+
+@keyframes flotter {
+    0% {
+        transform: translateY(0); 
+    }
+    50% {
+        transform: translateY(-15px); 
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
 /*.............recherche et filtrage............*/
+.rech_section{
+    padding: 80px 0px 8px;
+
+}
+.rech_section form{
+    background-color: var(--blanc-cassé);
+    width: 65rem;
+    height: 4rem;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr  1fr 1fr;
+    grid-template-rows: 1fr;
+    border-radius: 0px 10px 10px 0px;
+    border: solid 2px #ff512f;
+}
+.rech_section form input[type ='text']{
+    grid-column: 1/6;
+    grid-row: 1/2;
+    margin: 20px 6px;
+    border: none;
+    border-left: solid 1px ;
+    background-color: transparent;
+    outline: none;
+    color: var(--noir);
+    padding-left: 10px;
+}
+
+.rech_section form input[type ='submit']{
+    grid-column: 6/7;
+    grid-row: 1/2;
+    border: none;
+    border-radius: 0px 10px 10px 0px;
+    background:  linear-gradient(135deg, #ff512f, #f09819);
+}
+.filtr_section{
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+    width: 50rem;
+    height: 5rem;
+    padding: 10px 0px;
+}
+.filtre_buton{
+    padding: 2rem;
+    border-radius: 10px;
+    border: none;
+    transition: 0.3s;
+    background-color: var(--blanc);
+    color: var(--noir);
+    border: solid 2px var(--border);
+}
+.filtre_buton:hover{
+    transform: scale(0.95);
+}
+.decouvre{
+    padding: 40px 80px 8px;
+}
+.decouvre h2{
+    color: var(--noir);
+}
+#liste_produit{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+    grid-template-rows: 1fr;
+    gap: 10px;
+    width: auto;
+    margin: 80px;
+}
+
+.produit_item{
+    background-color: #d9d9d9;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 10px;
+    height: 100%; 
+    border: solid 0.5px var(--border);
+}
+
+.produit_item img{
+    background-color: var(--card);
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    box-sizing: border-box;
+    padding: 16px;
+}
+.conteneur{
+    background-color: var(--blanc);
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.conteneur h3 {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--noir);
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.4;
+    min-height: 42px; 
+}
+.conteneur span{
+    color: var(--gris);
+}
+.acheter {
+    background: linear-gradient(135deg, #ff512f, #f09819);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: auto;
+    transition: 0.3s;
+}
+.acheter:hover{
+    transform: scale(0.95);
+}
+.liste_panier{
+    position: absolute;
+    top: 10%;
+    right: 0%;
+    height: 30rem;
+    width: 50%;
+    background-color: var(--gris);
+    border-radius: 10px 0px 0px 10px;
+}
+.liste_panier ul{
+    display: flex;
+    width: auto;
+    margin: 10px;
+    justify-content: space-around;
+    padding: 20px;
+
+}
+.liste_panier ul li{
+    display: inline;
+    color: var(--noir);
+    font-weight: 500;
+}
+.liste_panier ul button{
+    color: var(--noir);
+    border: solid 3px #f09819;
+    border-radius: 10px;
+    background-color: var(--card);
+    padding: 8px;
+}
+
+footer{
+    background-color: var(--blanc);
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 150px;
+
+}
+footer p{
+    color: var(--noir);
+}
+
+@media screen and (max-width: 1066px){
+    .hero{
+        grid-template-columns: 1fr;
+        grid-row: 1fr 1fr;
+        height: auto;
+        padding: 1rem;
+    }
+    .hero_presentation{
+        margin: 80px;
+    }
+    .photo{
+        display: none;
+    }
+    .rech_section{
+        padding: 10px 80px;
+    }
+    .rech_section form{
+        width:auto;
+        margin: auto;
+        height: auto;
+    }
+    .filtr_section{
+        margin: auto;
+        width: auto;
+        height: auto;
+        padding: 10px 80px;
+    }
+    .liste_panier ul{
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 768px){
+    nav{
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
+    nav ul{
+        display: flex;
+        flex-direction: column;
+    }
+    .hero{
+        grid-template-columns: 1fr;
+        grid-row: 1fr 1fr;
+        height: auto;
+        padding: 1rem;
+    }
+    .hero_presentation{
+        margin: auto;
+    }
+    .photo{
+        display: none;
+    }
+    .rech_section{
+        padding: 1rem;
+    }
+    .rech_section form{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr ;
+        background-color: #eaeaea;
+        width:auto;
+        margin: auto;
+        height: auto;
+    }
+    .rech_section form input[type ='text']{
+            grid-row: 1/2;
+            grid-column: 1/2;
+            padding: auto;
+            color: var(--blanc);
+    }
+    .rech_section form input[type ='submit']{
+            grid-row: 2/3;
+            grid-column: 1/2;
+            padding: 1rem;
+            border-radius: 0px;
+            
+    }
+    .filtr_section{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin: auto;
+        width: auto;
+        height: auto;
+        padding: 10px 1rem;
+    }
+    #liste_produit{
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+        width: auto;
+        margin: auto;
+        padding: 1rem;
+    }
+    .liste_panier ul{
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
+    footer{
+        margin-top: 3rem;
+    }
+
+}

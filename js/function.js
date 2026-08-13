@@ -1,7 +1,5 @@
-// functions pour la table produits
 
-//..........Afficher tous les produits...........
-
+//...........Arricher tous les produits
 async function toutProduits(){
     let liste_produit = document.getElementById('liste_produit');
     try{
@@ -11,12 +9,13 @@ async function toutProduits(){
             let produit = '';
             for(let el of jsonReponse){
                     produit += `<div class="produit_item">
-                    <h3> ${el.title} </h3>
-                    <span> ${el.price} </span>
-                    <p> ${el.description} </p>
-                    <span> ${el.category} </span>
-                    <button class="acheter">acheter</button>
                     <img src="${el.image}">
+                    <div class="conteneur">
+                    <h3> ${el.title} </h3>
+                    <span> ${el.price}  €</span>
+                    <span> ${el.category} </span>
+                    <button class="acheter"  data-id="${el.id}" data-titre="${el.title}" data-prix="${el.price}" data-desc="${el.description}"  >acheter</button>
+                    </div>
                 </div>`
             }
             liste_produit.innerHTML = produit;
@@ -29,7 +28,9 @@ async function toutProduits(){
 }
 document.addEventListener('DOMContentLoaded', () =>{toutProduits()})
 
-//.......REchercher des produits..........
+
+
+// .......Rechercher un produit
 async function trouveProduit(){
     let liste_produit = document.getElementById('liste_produit');
     const recup = document.forms['rech_form']['categorie'].value;
@@ -53,12 +54,13 @@ async function trouveProduit(){
             }else{
                 for(let el of categorie_liste){
                     produit += `<div class="produit_item">
-                    <h3> ${el.title} </h3>
-                    <span> ${el.price} </span>
-                    <p> ${el.description} </p>
-                    <span> ${el.category} </span>
-                    <button class="acheter" data-id="${el.id}" data-titre="${el.title}" data-prix="${el.price}" data-desc="${el.description}" data-image="${el.image}" >acheter</button>
                     <img src="${el.image}">
+                    <div class="conteneur">
+                    <h3> ${el.title} </h3>
+                    <span> ${el.price}  € </span>
+                    <span> ${el.category} </span>
+                    <button class="acheter"  data-id="${el.id}" data-titre="${el.title}" data-prix="${el.price}" data-desc="${el.description}" >acheter</button>
+                    </div>
                 </div>`
                 }
                 liste_produit.innerHTML = produit;
@@ -75,7 +77,7 @@ document.forms['rech_form'].addEventListener('submit', (e) =>{
     trouveProduit();
 })
 
-//..........Filtrer les produits avec.....
+//...........Filtrer les produits
 async function filtreProduit(categorie){
     let liste_produit = document.getElementById('liste_produit');
     let produit = '';
@@ -87,14 +89,15 @@ async function filtreProduit(categorie){
                 return el.category === categorie;
             });
             for(let el of categorie_liste){
-                produit += `<div class="produit_item">
-                <h3> ${el.title} </h3>
-                <span> ${el.price} </span>
-                <p> ${el.description} </p>
-                <span> ${el.category} </span>
-                <button class="acheter" data-id="${el.id}" data-titre="${el.title}" data-prix="${el.price}" data-desc="${el.description}" data-image="${el.image}">acheter</button>
-                <img src="${el.image}">
-            </div>`
+                    produit += `<div class="produit_item">
+                    <img src="${el.image}">
+                    <div class="conteneur">
+                    <h3> ${el.title} </h3>
+                    <span> ${el.price}  € </span>
+                    <span> ${el.category} </span>
+                    <button class="acheter"  data-id="${el.id}" data-titre="${el.title}" data-prix="${el.price}" data-desc="${el.description}"  >acheter</button>
+                    </div>
+                </div>`
             }
             liste_produit.innerHTML = produit;
         }else{
@@ -110,28 +113,51 @@ for(let el of categorie){
     el.addEventListener('click', () =>{filtreProduit(el.dataset.cat)});
 }
 
-//......Pour ajouter article au panier.......
 
+//......... Pour gerer le panier
 let liste_produit = document.getElementById('liste_produit');
 liste_produit.addEventListener('click', (e) =>{
     if(e.target.className == "acheter"){
         let produit_select = e.target;
         const produit ={
             id : produit_select.dataset.id,
-            titre : produit_select.dataset.title,
-            prix : produit_select.dataset.price,
-            description : produit_select.dataset.description,
-            image : produit_select.dataset.image
+            titre : produit_select.dataset.titre,
+            prix : produit_select.dataset.prix,
+            description : produit_select.dataset.desc
         }
         remplisPanier(produit);
         afficheNombre();
     }
 })
+
 function remplisPanier(produit){
     let panier = JSON.parse(localStorage.getItem('panier')) || [];
     panier.push(produit);
     localStorage.setItem('panier', JSON.stringify(panier))
 }
+
+function afficherPanier(){
+    let panier = JSON.parse(localStorage.getItem('panier')) || [];
+    let body = document.querySelector('body');
+    let liste_panier = document.querySelector('.liste_panier')
+    if(liste_panier){
+        liste_panier.remove();
+    }else{
+        let produit =''
+        for(let [ index, el] of panier.entries() ){
+            produit+=`<ul>
+            <li>${el.titre}</li>
+            <li>${el.prix} € </li>
+            <button data-index="${index}">supprimer</button>
+            </ul>`
+        }
+        let barre_laterale = document.createElement('div')
+        barre_laterale.classList.add('liste_panier')
+        barre_laterale.innerHTML = produit
+        body.appendChild(barre_laterale)
+    }
+}
+
 function afficheNombre(){
     let cadi = document.getElementById('cadi')
     let panier = JSON.parse(localStorage.getItem('panier')) || [];
@@ -142,4 +168,17 @@ function afficheNombre(){
     }
 }
 
+let change = document.getElementById('change')
+change.addEventListener('click', ()=>{
+    let page = document.querySelector('html');
+    if(page.dataset.theme == 'sombre'){
+        page.dataset.theme = 'clair';
+    }else{
+        page.dataset.theme = 'sombre';
+    }
+})
 
+let shop = document.getElementById('shop')
+shop.addEventListener('click', ()=>{
+    afficherPanier();
+})
